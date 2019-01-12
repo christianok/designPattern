@@ -1,5 +1,8 @@
 <?php namespace design\interpreter;
 
+/**
+ *
+ */
 class InterpreterPatternDemo
 {
     public static function getMaleExpression()
@@ -12,11 +15,18 @@ class InterpreterPatternDemo
 
     public static function getFemaleExpression()
     {
-        $julie = new TerminalExpression('julie');
-        $lucy = new TerminalExpression('lucy');
+        $lucy = new TerminalExpression('Lucy');
+        $female = new TerminalExpression('Female');
 
-        return new AndExpression($julie, $lucy);
+        return new AndExpression($lucy, $female);
+    }
+
+    public function test()
+    {
+        $male = self::getMaleExpression();
+        $female = self::getFemaleExpression();
+
+        $male->interpret('John');
+        $female->interpret('Lucy');
     }
 }
-
-$demo = new InterpreterPatternDemo();
